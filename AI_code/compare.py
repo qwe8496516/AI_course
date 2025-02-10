@@ -105,7 +105,7 @@ if __name__ == '__main__':
     # #[0, 6, 14, 2, 10, 5, 4, 9, 15, 16, 17, 19, 11, 7, 13, 3, 1, 18, 8, 12, 0]
 
     start_city = 0
-    num_coordinate = 4
+    num_coordinate = 16
     coordinates = coordinate.generate_coordinates(num_coordinate)
 
     alpha = 1

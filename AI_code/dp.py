@@ -10,13 +10,15 @@ def dynamic_programming(start_city, coordinates):
     path = dict()
 
     def tsp(current_city, cities_to_visit):
-        if not cities_to_visit:
-            return distance_cost[current_city][start_city]
-            
         cities_to_visit_t = (current_city, tuple(sorted(cities_to_visit)))
         if cities_to_visit_t in dp:
             # print(current_city, cities_to_visit)
             return dp[cities_to_visit_t]
+        
+        if not cities_to_visit:
+            cost = distance_cost[current_city][start_city]
+            dp[cities_to_visit_t] = cost
+            return cost
         
         min_cost = float('inf')
         min_cost_path = None
