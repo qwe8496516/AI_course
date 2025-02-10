@@ -38,11 +38,10 @@ def draw_cities_best_path(algorithm, start_city, total_cost, best_path, coordina
     for i in range(len(best_path) - 1):
         x1, y1 = coordinates[best_path[i]]
         x2, y2 = coordinates[best_path[i + 1]]
-        dist = distance_calculation((x1, y1), (x2, y2)) 
-        mid_x = (x1 + x2) / 2
-        mid_y = (y1 + y2) / 2
+        # dist = distance_calculation((x1, y1), (x2, y2)) 
+        # mid_x = (x1 + x2) / 2
+        # mid_y = (y1 + y2) / 2
         plt.plot([x1, x2], [y1, y2], color='brown')
-        # plt.text(x2, y2, f'{i + 1}', fontsize=10, ha='center')
         # plt.text(mid_x, mid_y, f'{dist}', fontsize=10, ha='center')
     
     plt.title(f'{algorithm}\nTotal Distance: {total_cost}')
