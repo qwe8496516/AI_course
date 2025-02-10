@@ -105,26 +105,26 @@ if __name__ == '__main__':
     # #answer: 1232
     # #[0, 6, 14, 2, 10, 5, 4, 9, 15, 16, 17, 19, 11, 7, 13, 3, 1, 18, 8, 12, 0]
 
-    start_city = 0
-    num_coordinate = 17
-    coordinates = coordinate.generate_coordinates(num_coordinate)
+    # start_city = 0
+    # num_coordinate = 17
+    # coordinates = coordinate.generate_coordinates(num_coordinate)
 
-    alpha = 1
-    beta = 1
-    evaporation_rate = 0.3
-    quality_factor = 1
-    iterations = 1000
+    # alpha = 1
+    # beta = 1
+    # evaporation_rate = 0.3
+    # quality_factor = 1
+    # iterations = 1000
 
-    min_cost, best_path = aco.ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
-    print('TSP using ACO result:')
-    print("Min cost :", min_cost)
-    print("Best path :", best_path)
-    coordinate.draw_cities_best_path('Ant Colony Optimization', start_city, min_cost, best_path, coordinates)
+    # min_cost, best_path = aco.ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
+    # print('TSP using ACO result:')
+    # print("Min cost :", min_cost)
+    # print("Best path :", best_path)
+    # coordinate.draw_cities_best_path('Ant Colony Optimization', start_city, min_cost, best_path, coordinates)
 
-    min_cost = dp.dynamic_programming(start_city, coordinates)
-    print('TSP using Dynamic Programming result:')
-    print("Min cost :", min_cost)
-    print("Best path :", best_path)
-    coordinate.draw_cities_best_path('Dynamic Programming', start_city, min_cost, best_path, coordinates)
+    # min_cost = dp.dynamic_programming(start_city, coordinates)
+    # print('TSP using Dynamic Programming result:')
+    # print("Min cost :", min_cost)
+    # print("Best path :", best_path)
+    # coordinate.draw_cities_best_path('Dynamic Programming', start_city, min_cost, best_path, coordinates)
 
-    # compare.comparison_algorithm()
+    compare.comparison_algorithm()
