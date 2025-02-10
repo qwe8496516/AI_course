@@ -105,14 +105,14 @@ if __name__ == '__main__':
     # #[0, 6, 14, 2, 10, 5, 4, 9, 15, 16, 17, 19, 11, 7, 13, 3, 1, 18, 8, 12, 0]
 
     start_city = 0
-    num_coordinate = 16
+    num_coordinate = 50
     coordinates = coordinate.generate_coordinates(num_coordinate)
 
     alpha = 1
     beta = 1
     evaporation_rate = 0.5
     quality_factor = 10
-    iterations = 100
+    iterations = 1000
 
     min_cost, best_path = aco.ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
     print('TSP using ACO result:')
