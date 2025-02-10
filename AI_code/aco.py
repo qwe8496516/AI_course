@@ -2,10 +2,11 @@ import random
 import coordinate
 
 def ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates):
+    total_times = 0
     distance_cost = coordinate.transfer_coordinate_to_cost_matrix(coordinates)
     num_ants = len(distance_cost)
     num_cities = len(distance_cost)
-    pheromone_matrix = [[1 for _ in range(num_cities)] for _ in range(num_cities)]
+    pheromone_matrix = [[0 if i == j else 1 for j in range(num_cities)] for i in range(num_cities)]
     best_path = []
     min_cost = float('inf')
 
@@ -67,10 +68,18 @@ def ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, itera
 
         # print(ant_paths)
         # print(ant_distances)
+
+        if (all(x == ant_distances[0] for x in ant_distances)):
+            total_times += 1
+
+        if total_times == 10:
+            break
     
     # print('best_path:', best_path)
     s_index = best_path.index(start_city)
     best_path = best_path[s_index:] + best_path[:s_index] + [start_city]
     if best_path[-2] < best_path[1]:
         best_path.reverse()
+
+    # print(pheromone_matrix)
     return min_cost, best_path
