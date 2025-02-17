@@ -7,6 +7,7 @@ def ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, itera
     num_ants = len(distance_cost)
     num_cities = len(distance_cost)
     pheromone_matrix = [[0 if i == j else 1 for j in range(num_cities)] for i in range(num_cities)]
+    iteration_best_cost = []
     best_path = []
     min_cost = float('inf')
 
@@ -68,8 +69,9 @@ def ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, itera
 
         # print(ant_paths)
         # print(ant_distances)
+        iteration_best_cost.append(min(ant_distances))
 
-        if (all(x == ant_distances[0] for x in ant_distances)):
+        if (is_all_same_element(ant_distances)):
             total_times += 1
 
         if total_times == 10:
@@ -82,4 +84,7 @@ def ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, itera
         best_path.reverse()
 
     # print(pheromone_matrix)
-    return min_cost, best_path
+    return min_cost, best_path, iteration_best_cost
+
+def is_all_same_element(ant_distances):
+    return all(x == ant_distances[0] for x in ant_distances)

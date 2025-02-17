@@ -1,13 +1,14 @@
 import math
 import random as rd
 import matplotlib.pyplot as plt
+import numpy as np
 import log
 
 def generate_coordinates(num_coordinate):
     coordinates = set()
 
     while len(coordinates) < num_coordinate:
-        coordinates.add((rd.randint(0, 100), rd.randint(0, 100)))
+        coordinates.add((rd.randint(0, 1000), rd.randint(0, 1000)))
 
     coordinates = list(coordinates)
     log.log_coordinate_data(coordinates)
@@ -46,4 +47,16 @@ def draw_cities_best_path(algorithm, start_city, total_cost, best_path, coordina
     
     plt.title(f'{algorithm}\nTotal Distance: {total_cost}')
     plt.savefig(f'./images/{algorithm}.png')
+    plt.clf()
+
+def draw_iteration_best_cost(iteration_costs):
+    iterations = np.arange(1, len(iteration_costs) + 1)
+
+    plt.plot(iterations, iteration_costs, color='blue', label='Cost')
+
+    plt.xlabel('Iteration')
+    plt.ylabel('Cost')
+    plt.title('Iteration vs Cost Trend Line')
+    plt.legend()
+    plt.savefig(f'./images/ACO_iteration_cost.png')
     plt.clf()

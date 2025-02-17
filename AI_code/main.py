@@ -119,15 +119,16 @@ if __name__ == '__main__':
 
     alpha = 1
     beta = 1
-    evaporation_rate = 0.3
-    quality_factor = 1
+    evaporation_rate = 0.5
+    quality_factor = 100
     iterations = 1000
 
-    min_cost, best_path = aco.ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
+    min_cost, best_path, iteration_costs = aco.ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
     print('TSP using ACO result:')
     print("Min cost :", min_cost)
     print("Best path :", best_path)
     coordinate.draw_cities_best_path('Ant Colony Optimization', start_city, min_cost, best_path, coordinates)
+    coordinate.draw_iteration_best_cost(iteration_costs)
 
     min_cost, best_path = dp.dynamic_programming(start_city, coordinates)
     print('TSP using Dynamic Programming result:')
