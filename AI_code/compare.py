@@ -55,3 +55,4 @@ def draw_time_cost_graph(aco_time, dp_time, num_cities):
     plt.title('Time Cost Comparison (ACO vs DP)')
     plt.legend()
     plt.savefig('./images/time_cost_comparison.png')
+    plt.clf()
