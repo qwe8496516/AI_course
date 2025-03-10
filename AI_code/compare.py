@@ -3,10 +3,13 @@ import aco
 import time
 import coordinate
 import matplotlib.pyplot as plt
+import mlflow
 
 def comparison_algorithm():
+    mlflow.set_tracking_uri('http://140.124.181.7:5000')
+    mlflow.set_experiment('ACO Time Cost')
     start_city = 0
-    num_cities = 21
+    num_cities = 50
     alpha = 1
     beta = 1
     evaporation_rate = 0.3
@@ -17,11 +20,15 @@ def comparison_algorithm():
     dp_time = []
 
     for i in range(2, num_cities):
-        num_coordinate = i
-        coordinates = coordinate.generate_coordinates(num_coordinate)
-        
-        aco_time.append(calculate_aco_time_cost(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates))
-        dp_time.append(calculate_dp_time_cost(start_city, coordinates))
+        with mlflow.start_run() as run:
+            mlflow.log_params({ "cities" : i })
+            num_coordinate = i
+            coordinates = coordinate.generate_coordinates(num_coordinate)
+            aco_cost = calculate_aco_time_cost(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
+            dp_cost = calculate_dp_time_cost(start_city, coordinates)
+            aco_time.append(aco_cost)
+            dp_time.append(dp_cost)
+            mlflow.log_metrics({ "ACO Time Cost" : aco_cost})
     
     draw_time_cost_graph(aco_time, dp_time, num_cities)
 
