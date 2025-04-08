@@ -75,7 +75,8 @@ def ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, itera
         print("每一隻螞蟻的路徑:[ant1_pathLength, ant2_pathLength, ...]")
         print(ant_distances) # 印出每一隻螞蟻的路徑長度
         print("Pheromone matrix:")
-        print(pheromone_matrix) # 印出每一隻螞蟻的費洛蒙濃度
+        for row in pheromone_matrix:
+            print([f"{value:.5f}" for value in row]) # 印出費洛蒙濃度矩陣
 
         iteration_best_cost.append(min(ant_distances))
 
