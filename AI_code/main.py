@@ -105,30 +105,34 @@ if __name__ == '__main__':
     # #answer: 1232
     # #[0, 6, 14, 2, 10, 5, 4, 9, 15, 16, 17, 19, 11, 7, 13, 3, 1, 18, 8, 12, 0]
 
-    # start_city = 0
+
+    #------------------------------------------------------------上方皆為測試資料------------------------------------------------------------------
+
+    start_city = 0
     # num_coordinate = 300
     # coordinates = coordinate.generate_coordinates(num_coordinate)
 
-    # coordinates = [
-    #     (70, 42),
-    #     (48, 40),
-    #     (2, 58),
-    #     (46, 12),
-    #     (76, 15)
-    # ]
+    # 輸入城市座標
+    coordinates = [
+        (70, 42),
+        (48, 40),
+        (2, 58),
+        (46, 12),
+        (76, 15)
+    ]
 
-    # alpha = 1
-    # beta = 1
-    # evaporation_rate = 0.95
-    # quality_factor = 100
-    # iterations = 50
+    alpha = 1
+    beta = 1
+    evaporation_rate = 0.95
+    quality_factor = 100
+    iterations = 5
 
-    # min_cost, best_path, iteration_costs = aco.ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
-    # print('TSP using ACO result:')
-    # print("Min cost :", min_cost)
-    # print("Best path :", best_path)
-    # coordinate.draw_cities_best_path('Ant Colony Optimization', start_city, min_cost, best_path, coordinates)
-    # coordinate.draw_iteration_best_cost(iteration_costs)
+    min_cost, best_path, iteration_costs = aco.ant_colony_optimization(alpha, beta, evaporation_rate, quality_factor, iterations, start_city, coordinates)
+    print('TSP using ACO result:')
+    print("Min cost :", min_cost)
+    print("Best path :", best_path)
+    coordinate.draw_cities_best_path('Ant Colony Optimization', start_city, min_cost, best_path, coordinates)
+    coordinate.draw_iteration_best_cost(iteration_costs)
 
     # min_cost, best_path = dp.dynamic_programming(start_city, coordinates)
     # print('TSP using Dynamic Programming result:')
@@ -136,4 +140,4 @@ if __name__ == '__main__':
     # print("Best path :", best_path)
     # coordinate.draw_cities_best_path('Dynamic Programming', start_city, min_cost, best_path, coordinates)
 
-    compare.comparison_algorithm()
+    # compare.comparison_algorithm()
