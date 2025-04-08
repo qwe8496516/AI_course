@@ -17,6 +17,6 @@ if __name__ == "__main__":
     sample_size = 25
     sample_average = 75000
     sample_standard_deviation = 10000
-    popluation_standard_deviation = standard_deviation(sample_size, sample_standard_deviation)
+    popluation_standard_deviation = standard_deviation(sample_size, sample_standard_deviation)   # if population_standard_deviation != 0 then use popluation_standard_deviation
     z_score_value = z_score(popluation_average, sample_average, popluation_standard_deviation)
     showResult(popluation_average, z_score_value)
